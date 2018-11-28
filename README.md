@@ -6,7 +6,7 @@ Please develop a _custom_ Drupal module that will render a list of pages that we
 * Please develop a _Block_ module
 * Ensure your module shows up in the Module Listing
 * Demonstrate use of Drupal 7 hooks
-* If possible, include a Drupal Simple Test test case for your module
+* Include a Drupal test case for your module
 
 We do understand your time is valuable and therefore tried to keep the scope of this challenge to 1-2 hours. The goal is to see your approach to the problem and your coding style rather than delivering a specific set of features.
 
