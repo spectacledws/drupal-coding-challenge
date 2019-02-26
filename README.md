@@ -4,7 +4,7 @@ This is a small Drupal coding challenge that we normally ask all candidates to c
 
 Please develop a _custom_ Drupal module that will render a list of pages that were modified on a _current day_:
 * Please develop a _Block_ module
-* Ensure your module shows up in the Module Listing* 
+* Ensure your module shows up in the Module Listing
 * Include a Drupal test case for your module
 * Use Drupal 7 or 8
 
