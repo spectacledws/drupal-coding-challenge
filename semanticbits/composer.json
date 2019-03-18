@@ -1,0 +1,14 @@
+{
+  "name": "drupal/semanticbits",
+  "type": "drupal-module",
+  "description": "Custom module for semanticbits coding challenge. Module should create a block that lists all nodes modified on the current day (today)",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://www.drupal.org/project/semanticbits",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/semanticbits",
+    "source": "http://cgit.drupalcode.org/semanticbits"
+  },
+  "require": { }
+}

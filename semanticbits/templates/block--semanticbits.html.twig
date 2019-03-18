@@ -1,0 +1,22 @@
+{# 
+/** 
+ * @file
+ * Profile semanticbits block.
+ */
+#}
+
+{# 
+/** 
+ * If the results are a list loop through results.
+#}
+{% if nodes is iterable %}
+    <div id="nodes">
+    <div>Content updated today:</div>
+        {% for node in nodes %}
+            <div class="semanticbits-title"><a href="{{ node.nodeurl }}">{{ node.nodetitle }}</a></div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div>No content updated today.</div>
+{% endif %}
+

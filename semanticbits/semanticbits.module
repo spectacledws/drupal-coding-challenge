@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Contains semanticbits.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Config\FileStorage;
+use Drupal\Core\Config\InstallStorage;
+use Drupal\views\Entity\View;
+
+/**
+ * Implements hook_help().
+ */
+function semanticbits_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the semanticbits module.
+    case 'help.page.semanticbits':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom module for semanticbits coding challenge. Module should 
+              create a block that lists all nodes modified on the current day 
+              (today). This module has two block options, one block is created 
+              via a view and another is created in a block plugin. The view 
+              creation is the preferred way since it leverages existing Drupal 
+              core modules, reduces code size, and provides a handy user 
+              interface for changes if any need to be made. But since this a 
+              coding challenge I figured you\'d want the custom block code, so 
+              I did that too.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function semanticbits_theme($existing, $type, $theme, $path) {
+  return [
+    'semanticbitsblock' => [
+      'variables' => [
+        'nodes' => NULL,
+      ],
+      'template' => 'block--semanticbits',
+    ]
+  ];
+
+}
+
+/**
+ * Add view of content based on modified date.
+ */
+function semanticbits_updated_content_view() {
+  // Is the views module turned on and does the view already exist?
+  if (\Drupal::moduleHandler()->moduleExists('views')) {
+    // If the views module is enabled then we try and create the view.
+    if (!View::load('semantic_bits_content_modified')) {
+      $module_handler = \Drupal::moduleHandler();
+      $optional_install_path = $module_handler
+        ->getModule('semanticbits')
+        ->getPath() . '/' . InstallStorage::CONFIG_OPTIONAL_DIRECTORY;
+
+      $storage = new FileStorage($optional_install_path);
+      \Drupal::entityTypeManager()
+        ->getStorage('view')
+        ->create($storage
+        ->read( 'views.view.semantic_bits_content_modified'))
+        ->save();
+      return t('Semantic Bits Content Modified view has been created.');
+    }
+    return t('The Semantic Bits Content Modified view already exist');
+  }
+}

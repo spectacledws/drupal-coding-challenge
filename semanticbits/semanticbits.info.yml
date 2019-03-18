@@ -1,0 +1,15 @@
+name: 'semanticbits'
+type: module
+description: 'Custom module for semanticbits coding challenge. Module should 
+              create a block that lists all nodes modified on the current day 
+              (today). This module has two block options, one block is created 
+              via a view and another is created in a block plugin. The view 
+              creation is the preferred way since it leverages existing Drupal 
+              core modules, reduces code size, and provides a handy user 
+              interface for changes if any need to be made. But since this a 
+              coding challenge I figured you would want the custom block code, so 
+              I did that too.'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - views
